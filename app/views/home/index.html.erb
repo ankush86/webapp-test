@@ -1,0 +1,55 @@
+<div class="left_heading">
+<h1 class=heading>Quotes on design</h1>
+</div>
+<div class="right_btn">
+<button id="get-another-quote-button" type="button" class="btn btn-success btn-secondary">Get another random design quote</button>
+</div>
+<div class="center_content">
+  <div id="quote-content">
+    <%= strip_tags(@quote.content) %>
+  </div>
+</div>
+<div class="footer">
+  <div id="quote-title">
+    <%= @quote.title.upcase %>
+  </div>
+  <div id="quote-source">
+    <%= @quote.source %>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#get-another-quote-button').on('click', function(e) {
+      e.preventDefault();
+      $.ajax( {
+        url: 'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1',
+        success: function(data) {
+          var quote = data.shift();
+          $('#quote-title').text(quote.title);
+          $('#quote-content').html(quote.content);
+          if (typeof quote.custom_meta !== 'undefined' && typeof quote.custom_meta.Source !== 'undefined') {
+            $('#quote-source').html('Source:' + quote.custom_meta.Source);
+          } else {
+            $('#quote-source').text('');
+          }
+          var quote_param = { title: quote.title, content: quote.content, link: quote.link }
+          if (typeof quote.custom_meta !== 'undefined' && typeof quote.custom_meta.Source !== 'undefined'){
+            var data_value = { source: quote.custom_meta.Source }
+            quote_param = $.merge(quote_param, data_value);
+          }
+          $.ajax({
+            type: 'post',
+            url: '/create_quotes',
+            data: { quote: quote_param },
+            success: function(){
+            },
+            error: function(err){
+              alert(err)
+            }
+          });
+        },
+        cache: false
+      });
+    });
+  });
+</script>

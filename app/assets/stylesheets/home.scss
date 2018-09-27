@@ -1,0 +1,64 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.center_content {
+  font-family: 'Lora', serif;
+  font-size: 36px;
+  line-height: 1.3em;
+  margin-bottom: 10px;
+  font-weight: 300;
+  color: #545454;
+  width: 100%;
+  float: left;
+}
+.heading {
+  color: #16B6DF;
+  font-size: 42px;
+  max-width: 190px;
+  margin-left: 150px;
+}
+.left_heading {
+  float: left;
+  width: 50%;
+}
+.right_btn {
+  float: right;
+  width: 45%;
+  margin-right: 60px;
+  margin-top: 40px;
+}
+#get-another-quote-button {
+  text-decoration: none;
+  color: #16B6DF;
+  border: 3px solid #16B6DF;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-weight: bold;
+  background: #fff;
+  float: right;
+}
+#quote-content {
+  max-width: 50%;
+  margin: 0px auto;
+}
+.footer {
+  text-align: center;
+  margin-left: 90px;
+}
+#quote-title {
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #16B6DF;
+  font-weight: bold;
+  float: left;
+  width: 50%;
+}
+#quote-source {
+  width: 50%;
+  float: right;
+  line-height: 26px;
+  font-size: 18px;
+  color: #B5B5B5;
+  font-weight: bold;
+}
